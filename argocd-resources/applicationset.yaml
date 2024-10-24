@@ -9,7 +9,7 @@ spec:
         github:
           owner: jops8
           repo: argocd-pr-env
-        requeueAfterSeconds: 180
+        requeueAfterSeconds: 30
   template:
     metadata:
       name: nginx-{{ .branch | replace "/" "-" }}
