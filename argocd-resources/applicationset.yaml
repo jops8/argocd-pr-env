@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: nginx-prs
+  namespace: argocd
+spec:
+  generators:
+    - pullRequest:
+        github:
+          owner: jops8
+          repo: argocd-pr-env-app
+        requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: nginx-{{ .branch }}
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/jops8/argocd-pr-env-app'
+        targetRevision: HEAD
+        path: k8s/overlays/r-environment
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: 'preview-{{ .branch }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

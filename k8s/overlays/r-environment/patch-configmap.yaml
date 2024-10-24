@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-content
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>PR Environment - {{ .branch }}</title>
+    </head>
+    <body>
+        <h1>Welcome to the PR environment: {{ .branch }}</h1>
+        <p>This is a dynamically generated environment for the PR: <strong>{{ .branch }}</strong></p>
+    </body>
+    </html>

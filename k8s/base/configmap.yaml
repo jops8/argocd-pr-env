@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-content
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Default Environment</title>
+    </head>
+    <body>
+        <h1>Welcome to the default environment!</h1>
+        <p>This is the default content served by Nginx.</p>
+    </body>
+    </html>
