@@ -1,3 +1,4 @@
+# This is a template for creating applications for each pull request in the argocd-pr-env repository.
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
