@@ -8,20 +8,20 @@ spec:
     - pullRequest:
         github:
           owner: jops8
-          repo: argocd-pr-env-app
+          repo: argocd-pr-env
         requeueAfterSeconds: 180
   template:
     metadata:
-      name: nginx-{{ .branch }}
+      name: nginx-{{ branch }}
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/jops8/argocd-pr-env-app'
+        repoURL: 'https://github.com/jops8/argocd-pr-env'
         targetRevision: HEAD
         path: k8s/overlays/r-environment
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: 'preview-{{ .branch }}'
+        namespace: 'preview-{{ branch }}'
       syncPolicy:
         automated:
           prune: true
