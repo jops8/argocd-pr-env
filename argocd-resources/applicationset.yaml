@@ -12,7 +12,7 @@ spec:
         requeueAfterSeconds: 180
   template:
     metadata:
-      name: nginx-{{ .branch }}  # Usa {{ .branch }} correctamente para generar la aplicación basada en el nombre de la rama del PR
+      name: nginx-{{ .branch }}
     spec:
       project: default
       source:
@@ -21,7 +21,7 @@ spec:
         path: k8s/overlays/r-environment
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: 'preview-{{ .branch }}'  # El namespace se basa en el nombre de la rama
+        namespace: 'preview-{{ .branch }}'
       syncPolicy:
         automated:
           prune: true
