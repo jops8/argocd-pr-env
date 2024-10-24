@@ -12,7 +12,7 @@ spec:
         requeueAfterSeconds: 180
   template:
     metadata:
-      name: nginx-{{ .branch }}
+      name: nginx-{{ .branch | replace "/" "-" }}
     spec:
       project: default
       source:
