@@ -9,10 +9,10 @@ spec:
         github:
           owner: jops8
           repo: argocd-pr-env
-        requeueAfterSeconds: 180 # 3 minutes
+        requeueAfterSeconds: 180
   template:
     metadata:
-      name: nginx-{{ branch }}
+      name: nginx-{{ .branch }}  # Usa {{ .branch }} correctamente para generar la aplicación basada en el nombre de la rama del PR
     spec:
       project: default
       source:
@@ -21,7 +21,7 @@ spec:
         path: k8s/overlays/r-environment
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: 'preview-{{ branch }}'
+        namespace: 'preview-{{ .branch }}'  # El namespace se basa en el nombre de la rama
       syncPolicy:
         automated:
           prune: true
