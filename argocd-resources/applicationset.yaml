@@ -12,16 +12,16 @@ spec:
         requeueAfterSeconds: 30
   template:
     metadata:
-      name: nginx-{{ .branch | replace "/" "-" }}
+      name: nginx-{{ branch | replace "/" "-" }}
     spec:
+      destination:
+        namespace: preview-{{ branch | replace "/" "-" }}
+        server: https://kubernetes.default.svc
       project: default
       source:
-        repoURL: 'https://github.com/jops8/argocd-pr-env'
-        targetRevision: HEAD
         path: k8s/overlays/r-environment
-      destination:
-        server: 'https://kubernetes.default.svc'
-        namespace: 'preview-{{ .branch }}'
+        repoURL: https://github.com/jops8/argocd-pr-env
+        targetRevision: HEAD
       syncPolicy:
         automated:
           prune: true
