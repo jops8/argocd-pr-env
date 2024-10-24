@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:alpine  # Usamos Nginx como contenedor principal
+          image: nginx:alpine
           ports:
-            - containerPort: 80  # Exponemos el puerto 80 para acceder a la aplicación
+            - containerPort: 80
           volumeMounts:
             - name: html-volume
-              mountPath: /usr/share/nginx/html  # Montamos el volumen en el directorio HTML de Nginx
+              mountPath: /usr/share/nginx/html
       volumes:
         - name: html-volume
           configMap:
-            name: html-configmap  # Usamos un ConfigMap para almacenar el contenido del archivo HTML
+              name: html-configmap
