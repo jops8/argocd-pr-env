@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: demo-content
+  name: html-configmap
 data:
   index.html: |
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Default Environment</title>
+        <title>PR Environment</title>
     </head>
     <body>
-        <h1>Welcome to the default environment!</h1>
-        <p>This is the default content served by Nginx.</p>
+        <h1>Welcome to the PR environment!</h1>
+        <p>This is a static environment for testing purposes.</p>
     </body>
     </html>

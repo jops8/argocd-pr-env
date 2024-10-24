@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:latest
+          image: nginx:alpine  # Usamos Nginx como contenedor principal
           ports:
-            - containerPort: 80
+            - containerPort: 80  # Exponemos el puerto 80 para acceder a la aplicación
           volumeMounts:
-            - name: content-volume
-              mountPath: /usr/share/nginx/html
+            - name: html-volume
+              mountPath: /usr/share/nginx/html  # Montamos el volumen en el directorio HTML de Nginx
       volumes:
-        - name: content-volume
+        - name: html-volume
           configMap:
-            name: demo-content
+            name: html-configmap  # Usamos un ConfigMap para almacenar el contenido del archivo HTML
