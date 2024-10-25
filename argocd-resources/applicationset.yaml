@@ -10,7 +10,7 @@ spec:
         github:
           owner: jops8
           repo: argocd-pr-env
-        requeueAfterSeconds: 30
+        requeueAfterSeconds: 180
   template:
     metadata:
       name: 'nginx-{{ .branch_slug }}'
