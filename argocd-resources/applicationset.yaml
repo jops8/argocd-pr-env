@@ -4,6 +4,8 @@ metadata:
   name: nginx-prs
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - pullRequest:
         github:
@@ -12,16 +14,16 @@ spec:
         requeueAfterSeconds: 30
   template:
     metadata:
-      name: nginx-{{ branch | replace "/" "-" | lower }}
+      name: 'nginx-{{ .branch_slug }}'
     spec:
       destination:
-        namespace: preview-{{ branch | replace "/" "-" | lower }}
+        namespace: 'preview-{{ .branch_slug }}'
         server: https://kubernetes.default.svc
       project: default
       source:
-        repoURL: 'https://github.com/jops8/argocd-pr-env.git'
-        targetRevision: HEAD
         path: k8s/overlays/r-environment
+        repoURL: https://github.com/jops8/argocd-pr-env.git
+        targetRevision: HEAD
       syncPolicy:
         automated:
           prune: true
