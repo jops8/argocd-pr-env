@@ -4,6 +4,7 @@ metadata:
   name: nginx-prs
   namespace: argocd
 spec:
+  goTemplate: true
   generators:
     - pullRequest:
         github:
@@ -12,10 +13,10 @@ spec:
         requeueAfterSeconds: 30
   template:
     metadata:
-      name: 'nginx-{{ .branch }}'
+      name: 'nginx-{{ .branch_slug }}'
     spec:
       destination:
-        namespace: 'preview-{{.branch}}'
+        namespace: 'ephemeral-{{ .branch_slug }}'
         server: https://kubernetes.default.svc
       project: default
       source:
@@ -26,3 +27,5 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
