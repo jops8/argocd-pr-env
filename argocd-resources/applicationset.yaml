@@ -13,7 +13,7 @@ spec:
           # Argo will check the PRs with this label
           labels:
             - ephemeral
-        requeueAfterSeconds: 180
+        requeueAfterSeconds: 10
   template:
     metadata:
       name: 'nginx-{{ .branch_slug }}'
