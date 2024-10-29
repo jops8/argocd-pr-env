@@ -11,6 +11,7 @@ spec:
           owner: jops8
           repo: argocd-pr-env
           # Argo will check the PRs with this label
+
           labels:
             - ephemeral
         requeueAfterSeconds: 180
