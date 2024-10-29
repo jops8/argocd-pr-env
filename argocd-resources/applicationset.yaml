@@ -23,7 +23,7 @@ spec:
         server: https://kubernetes.default.svc
       project: default
       source:
-        path: k8s/overlays/r-environment
+        path: k8s/
         repoURL: https://github.com/jops8/argocd-pr-env.git
         targetRevision: HEAD
       syncPolicy:
